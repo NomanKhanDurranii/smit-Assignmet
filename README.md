@@ -1,2 +1,3 @@
 # sqlserver-t-sql-practice
-This repository contains a curated set of SQL Server (T-SQL) practice questions and exercises designed to build advanced query skills. It covers topics such as joins, window functions, CTEs, indexing, transactions, dynamic SQL.
+The assignment answers are in the respective directories, one file contains the structure and the data that is inserted and the other contains the queries of the exercise that were provided.
+The queries are also written inside the exercises.txt file for the ease of access.
