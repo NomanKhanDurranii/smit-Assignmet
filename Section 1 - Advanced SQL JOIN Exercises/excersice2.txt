@@ -4,3 +4,16 @@ Exercise:
 
 Select the last name and first name of customers and the name of their favorite color for customers with no purchases.
 
+Query:
+
+SELECT 
+    cu.last_name,
+    cu.first_name,
+    col.name AS favorite_color
+FROM customer cu
+LEFT JOIN color col 
+    ON cu.favorite_color_id = col.id
+LEFT JOIN clothing_order co 
+    ON cu.id = co.customer_id
+WHERE co.id IS NULL;
+

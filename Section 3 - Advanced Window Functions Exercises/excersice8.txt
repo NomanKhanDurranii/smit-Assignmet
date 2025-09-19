@@ -5,3 +5,15 @@ In this exercise, we're going to compute the difference between two consecutive 
 
 Show the ID of the order (order_id), the ID of the customer (customer_id), the total_amount of the order, the total_amount of the previous order based on the order_date (name the column previous_value), and the difference between the total_amount of the current order and the previous order (name the column delta).
 
+
+Query:
+
+SELECT 
+    order_id,
+    customer_id,
+    total_amount,
+    LAG(total_amount) OVER (PARTITION BY customer_id ORDER BY order_date) AS previous_value,
+    total_amount - LAG(total_amount) OVER (PARTITION BY customer_id ORDER BY order_date) AS delta
+FROM orders
+ORDER BY customer_id, order_date;
+

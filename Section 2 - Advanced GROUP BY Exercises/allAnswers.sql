@@ -1,9 +1,26 @@
-Exercise 6: Group Runners by Main Distance and Age
+-- Exercise #01
 
-Exercise:
-Display the distance and the number of runners there are for the following age categories: under 20, 20–29, 30–39, 40–49, and over 50. Use the following column aliases: under_20, age_20_29, age_30_39, age_40_49, and over_50.
+SELECT 
+    main_distance,
+    COUNT(*) AS runners_number
+FROM runner
+GROUP BY main_distance
+HAVING COUNT(*) > 3;
 
-Query:
+
+-- Exercise #02
+
+SELECT 
+    e.name AS event_name,
+    COUNT(re.runner_id) AS runner_count
+FROM event e
+LEFT JOIN runner_event re 
+    ON e.id = re.event_id
+GROUP BY e.id, e.name
+ORDER BY e.name;
+
+
+-- Exercise #03
 
 SELECT 
     main_distance,

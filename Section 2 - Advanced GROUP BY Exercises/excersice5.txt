@@ -3,3 +3,13 @@ Exercise 5: How Many Runners Participate in Each Event
 Exercise:
 Display the event name and the number of club members that take part in this event (call this column runner_count). Note that there may be events in which no club members participate. For these events, the runner_count should equal 0.
 
+Query:
+
+SELECT 
+    e.name AS event_name,
+    COUNT(re.runner_id) AS runner_count
+FROM event e
+LEFT JOIN runner_event re 
+    ON e.id = re.event_id
+GROUP BY e.id, e.name
+ORDER BY e.name;

@@ -3,3 +3,22 @@ Exercise 7: List the Top 3 Most Expensive Orders
 Exercise:
 Create a dense ranking of the orders based on their total_amount. The bigger the amount, the higher the order should be. If two orders have the same total_amount, the older order should go higher (you'll have to add the column order_date to the ordering). Name the ranking column rank. After that, select only the orders with the three highest dense rankings. Show the rank, order_id, and total_amount.
 
+Query:
+
+SELECT 
+    rank,
+    order_id,
+    total_amount
+FROM (
+    SELECT 
+        order_id,
+        total_amount,
+        order_date,
+        DENSE_RANK() OVER (
+            ORDER BY total_amount DESC, order_date ASC
+        ) AS rank
+    FROM orders
+) ranked_orders
+WHERE rank <= 3
+ORDER BY rank, order_id;
+

@@ -3,3 +3,12 @@ Exercise 3: Select All Main Categories and Their Subcategories
 Exercise:
 Select the name of the main categories (which have a NULL in the parent_id column) and the name of their direct subcategory (if one exists). Name the first column category and the second column subcategory.
 
+Query:
+
+SELECT 
+    main.name AS category,
+    sub.name AS subcategory
+FROM category main
+LEFT JOIN category sub 
+    ON sub.parent_id = main.id
+WHERE main.parent_id IS NULL;
